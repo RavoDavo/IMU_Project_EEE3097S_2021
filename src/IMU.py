@@ -490,7 +490,7 @@ if __name__ == '__main__':
       x=x+1
       #print('  %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8-9.8,vX,vY,vZ,dX,dY,dZ))
       #print('%6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8-9.8,Gyro[0],Gyro[1],Gyro[2], (Mag[0]),Mag[1],Mag[2],vX,vY,vZ))
-      print(date[:-4],' | %6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8,Gyro[0],Gyro[1],Gyro[2], (Mag[0]),Mag[1],Mag[2]))
+     # print(date[:-4],' | %6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8,Gyro[0],Gyro[1],Gyro[2], (Mag[0]),Mag[1],Mag[2]))
    
     
   
