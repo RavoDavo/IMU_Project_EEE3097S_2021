@@ -445,7 +445,7 @@ if __name__ == '__main__':
   PRESS_DATA = 0.0
   TEMP_DATA = 0.0
   u8Buf=[0,0,0]
-  with open('../IMU_Data/IMU_Data.csv', 'w',encoding='UTF8', newline='') as f:
+  with open('../IMU_Data/IMU_Data_15000_Row.csv', 'w',encoding='UTF8', newline='') as f:
     # create the csv writer
     writer = csv.writer(f)
 
@@ -455,12 +455,12 @@ if __name__ == '__main__':
     
 	
 	
-    while x<200:
+    while x<15000:
       date=str(datetime.datetime.now())
       icm20948.icm20948_Gyro_Accel_Read()
       icm20948.icm20948MagRead()
       icm20948.icm20948CalAvgValue()
-      time.sleep(0.1)
+     # time.sleep(1)
       icm20948.imuAHRSupdate(MotionVal[0] * 0.0175, MotionVal[1] * 0.0175,MotionVal[2] * 0.0175, MotionVal[3],MotionVal[4],MotionVal[5],MotionVal[6], MotionVal[7], MotionVal[8])
       pitch = math.asin(-2 * q1 * q3 + 2 * q0* q2)* 57.3
       roll  = math.atan2(2 * q2 * q3 + 2 * q0 * q1, -2 * q1 * q1 - 2 * q2* q2 + 1)* 57.3
@@ -484,15 +484,16 @@ if __name__ == '__main__':
       dZ=1/2*(Accel[2]/16384-9.8)*(0.1**2)
     # open the file in the write mode
 
-      data=[date[:-4], PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384,Accel[1]/16384,Accel[2]/16384,Gyro[0]/32.8,Gyro[1]/32.8,Gyro[2]/32.8, (Mag[0]),Mag[1],Mag[2]]
+      data=[date[:-4], PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8,Gyro[0]/32.8,Gyro[1]/32.8,Gyro[2]/32.8, (Mag[0]),Mag[1],Mag[2]]
       
       writer.writerow(data)
       x=x+1
       #print('  %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8-9.8,vX,vY,vZ,dX,dY,dZ))
       #print('%6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8-9.8,Gyro[0],Gyro[1],Gyro[2], (Mag[0]),Mag[1],Mag[2],vX,vY,vZ))
-     # print(date[:-4],' | %6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8,Gyro[0],Gyro[1],Gyro[2], (Mag[0]),Mag[1],Mag[2]))
+      #print(date[:-4],' | %6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8,Gyro[0],Gyro[1],Gyro[2], (Mag[0]),Mag[1],Mag[2]))
+      print(x)
+     # print(date[:-4],' | %6.2f hPa |  %6.2f °C |  %.2f | %.2f | %.2f | %d | %d | %d | %d | %d | %d | %d | %d | %d | \r\n'%(PRESS_DATA,TEMP_DATA,roll,pitch,yaw,Accel[0]/16384*9.8,Accel[1]/16384*9.8,Accel[2]/16384*9.8,Gyro[0]/32.6,Gyro[1]/32.8,Gyro[2]/32.6, (Mag[0]),Mag[1],Mag[2]))
    
-    
   
   
     
